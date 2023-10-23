@@ -266,6 +266,18 @@ namespace SpriteLibrary
             }
         }
 
+    public void DrawFullAnimation(string path) {
+      currentFrame = 0;
+      
+      foreach (var step in currentAnimation.Steps) {
+        //64x64
+        Bitmap tempBitmap = new Bitmap(32, 32, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
+        Graphics g = Graphics.FromImage(tempBitmap);
+        DrawAnimation(g);
+        tempBitmap.Save(path + $"{currentAnimation.Name}_{currentFrame}.png");
+      }
+    }
+
         public void DrawTile(Graphics g, string Row, int Col, Point pos, Point origin, TileDrawType drawType = TileDrawType.FULL, TileFlipType flipType = TileFlipType.NO_FLIP)
         {
             if (String.IsNullOrEmpty(Row))

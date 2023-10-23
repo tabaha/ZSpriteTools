@@ -15,6 +15,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Squirrel;
+using SpriteLibrary;
 
 namespace ZSpriteTools
 {
@@ -1361,9 +1362,15 @@ namespace ZSpriteTools
                 animationPictureBox.BackColor = colorDialog.Color;
             }
         }
-    }
 
-    public struct ComboBoxItem
+    private void cmdExportPreview_Click(object sender, EventArgs e) {
+      frameTimer.Stop();
+      currentSprite.DrawFullAnimation(@"C:\sprites\frames\");
+      frameTimer.Start();
+    }
+  }
+
+  public struct ComboBoxItem
     {
         public string Text { get; set; }
         public string Value { get; set; }
